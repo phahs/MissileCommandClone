@@ -42,23 +42,23 @@ public class Player : MonoBehaviour {
         horz = Input.GetAxis("Horizontal");
         p_AimRotation *= Quaternion.Euler(0, 0, -horz);
 
-        p_AimRotation = ClampRotationAroundXAxis(p_AimRotation);
+        p_AimRotation = ClampRotationAroundZAxis(p_AimRotation);
 
         transform.localRotation = p_AimRotation;
     }
     
-    Quaternion ClampRotationAroundXAxis(Quaternion q)
+    Quaternion ClampRotationAroundZAxis(Quaternion q)
     {
         q.x /= q.w;
         q.y /= q.w;
         q.z /= q.w;
         q.w = 1.0f;
 
-        float angleX = 2.0f * Mathf.Rad2Deg * Mathf.Atan(q.z);
+        float angleZ = 2.0f * Mathf.Rad2Deg * Mathf.Atan(q.z);
 
-        angleX = Mathf.Clamp(angleX, RotMin, RotMax);
+        angleZ = Mathf.Clamp(angleZ, RotMin, RotMax);
 
-        q.z = Mathf.Tan(0.5f * Mathf.Deg2Rad * angleX);
+        q.z = Mathf.Tan(0.5f * Mathf.Deg2Rad * angleZ);
 
         return q;
     }
