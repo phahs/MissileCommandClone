@@ -23,4 +23,12 @@ public class Bullet : MonoBehaviour {
             Destroy(gameObject);
         }
     }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.tag == "Missile")
+        {
+            Destroy(gameObject);
+        }
+    }
 }

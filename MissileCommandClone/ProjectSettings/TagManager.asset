@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Bullet Kill
   - Missile
+  - Building
+  - Ground
   layers:
   - Default
   - TransparentFX
