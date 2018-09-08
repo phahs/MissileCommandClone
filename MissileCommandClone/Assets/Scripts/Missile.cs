@@ -42,6 +42,9 @@ public class Missile : MonoBehaviour {
 
     private void OnCollisionEnter(Collision collision)
     {
-        Explode();
+        if (!(collision.collider.tag == "Missile"))
+        {
+            Explode();
+        }
     }
 }

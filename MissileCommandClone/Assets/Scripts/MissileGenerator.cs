@@ -44,13 +44,17 @@ public class MissileGenerator : MonoBehaviour {
             {
                 betweenWave = true;
                 WaveTimer = 0f;
+                WaveNumber += 1;
+                DetermineMissilesInWave();
             }
+            else
             {
                 if(MissilesPerWave > 0)
                 {
                     FireMissile();
                 }
             }
+            WaveTimer += Time.deltaTime;
         }
 	}
 
@@ -72,8 +76,8 @@ public class MissileGenerator : MonoBehaviour {
         {
             GameObject newMissile = Instantiate(Missile) as GameObject;
             newMissile.name = "Missile";
-            newMissile.transform.localPosition = new Vector3(Random.Range(-10f, 10f), Random.Range(10f, 13f), 0);
-            newMissile.GetComponent<Rigidbody>().AddForce(-transform.up * launchForce);
+            newMissile.transform.localPosition = new Vector3(Random.Range(-9.25f, 9.25f), Random.Range(10f, 13f), 0);
+            newMissile.GetComponent<Rigidbody>().AddForce(newMissile.transform.up * launchForce);
 
             MissilesPerWave -= 1;
             MissileChance = SetChanceToFireFirstMissile();
